@@ -13,7 +13,7 @@ export function loadConfig(): Config {
       const raw = JSON.parse(fs.readFileSync(CONFIG_FILE, "utf8"));
       return {
         repoPaths: Array.isArray(raw.repoPaths)
-          ? raw.repoPaths.filter((p: any) => typeof p === "string")
+          ? raw.repoPaths.filter((p: unknown) => typeof p === "string")
           : [],
         scanDir: typeof raw.scanDir === "string" ? raw.scanDir : "",
       };

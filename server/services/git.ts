@@ -77,11 +77,11 @@ export async function getRepoStatus(repoPath: string): Promise<RepoStatus> {
         working_dir: f.working_dir,
       })),
     };
-  } catch (e: any) {
+  } catch (e) {
     return {
       name: path.basename(repoPath),
       path: repoPath,
-      error: e.message,
+      error: (e as Error).message,
       branch: "?",
       isClean: null,
       changed: 0,
@@ -102,7 +102,7 @@ export async function executeGitOperation(
   message?: string
 ): Promise<{ success: boolean; result: string; status?: RepoStatus }> {
   const git = simpleGit(resolved);
-  let result = "";
+  let result: string;
 
   if (action === "fetch") {
     await git.fetch(["--all", "--prune"]);

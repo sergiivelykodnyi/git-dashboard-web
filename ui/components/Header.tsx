@@ -1,4 +1,4 @@
-import { RefreshCw, Plus, GitBranch, CloudDownload } from "lucide-react";
+import { Icon } from "./Icon";
 import { useAppStore } from "../store";
 
 interface Props {
@@ -21,8 +21,8 @@ export function Header({
   return (
     <header className="bg-mantle border-b border-surface0 px-6 h-14 flex items-center justify-between sticky top-0 z-50 shrink-0">
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 font-mono font-semibold text-base text-mauve tracking-tight">
-          <GitBranch size={18} />
+        <div className="flex items-center gap-2 font-mono font-semibold text-mauve tracking-tight">
+          <Icon name="fork_right" size={24} />
           git dashboard
         </div>
       </div>
@@ -36,7 +36,7 @@ export function Header({
           {refreshing ? (
             <span className="spinner" />
           ) : (
-            <RefreshCw size={12} className={refreshing ? "spin" : ""} />
+            <Icon name="sync" size={16} className={refreshing ? "spin" : ""} />
           )}{" "}
           Refresh all
         </button>
@@ -48,12 +48,12 @@ export function Header({
           {fetching ? (
             <span className="spinner" />
           ) : (
-            <CloudDownload size={12} />
+            <Icon name="cloud_download" size={16} />
           )}{" "}
           Fetch all
         </button>
         <button className="btn btn-primary" onClick={onAddRepo}>
-          <Plus size={12} /> Add repo
+          <Icon name="add" size={16} /> Add repo
         </button>
       </div>
     </header>

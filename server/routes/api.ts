@@ -1,7 +1,12 @@
 import { Router } from "express";
 import { simpleGit } from "simple-git";
 import { loadConfig, saveConfig, resolveRepoPath } from "../services/config.js";
-import { scanDirectory, getRepoStatus, isGitRepo, executeGitOperation } from "../services/git.js";
+import {
+  scanDirectory,
+  getRepoStatus,
+  isGitRepo,
+  executeGitOperation,
+} from "../services/git.js";
 
 export const apiRouter = Router();
 
@@ -52,8 +57,8 @@ apiRouter.post("/repos/git", async (req, res) => {
   try {
     const response = await executeGitOperation(resolved, action, message);
     res.json(response);
-  } catch (e: any) {
-    res.status(500).json({ success: false, result: e.message });
+  } catch (e: unknown) {
+    res.status(500).json({ success: false, result: (e as Error).message });
   }
 });
 
@@ -118,7 +123,7 @@ apiRouter.post("/repos/fetch-all", async (req, res) => {
         // ignore fetch errors; still return updated status
       }
       return getRepoStatus(repoPath);
-    })
+    }),
   );
   res.json(results);
 });

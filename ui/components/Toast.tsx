@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { CheckCircle, XCircle } from 'lucide-react';
-import { setToastHandler } from '../utils/toast';
+import { useEffect, useState } from "react";
+import { Icon } from "./Icon";
+import { setToastHandler } from "../utils/toast";
 
 interface ToastItem {
   id: number;
   msg: string;
-  type: 'ok' | 'err';
+  type: "ok" | "err";
 }
 
 let toastId = 0;
@@ -19,14 +19,20 @@ export function ToastContainer() {
       setToasts((p) => [...p, { id, msg, type }]);
       setTimeout(() => setToasts((p) => p.filter((t) => t.id !== id)), 4000);
     });
-    return () => { setToastHandler(null); };
+    return () => {
+      setToastHandler(null);
+    };
   }, []);
 
   return (
     <div className="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
       {toasts.map((t) => (
         <div key={t.id} className={`toast toast-${t.type}`}>
-          {t.type === 'ok' ? <CheckCircle size={14} /> : <XCircle size={14} />}
+          {t.type === "ok" ? (
+            <Icon name="check_circle" size={16} />
+          ) : (
+            <Icon name="cancel" size={16} />
+          )}
           <span>{t.msg}</span>
         </div>
       ))}

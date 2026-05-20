@@ -1,11 +1,4 @@
-import {
-  ArrowDownToLine,
-  ArrowUpFromLine,
-  Trash2,
-  GitBranch,
-  BookMarked,
-  CloudDownload,
-} from "lucide-react";
+import { Icon } from "./Icon";
 import { useAppStore } from "../store";
 import { removeRepo as apiRemoveRepo } from "../api";
 import { useGitAction } from "../hooks/useGitAction";
@@ -36,12 +29,14 @@ export function RepoRow({ repo }: Props) {
     <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 bg-mantle border border-surface0 rounded-xl py-4 px-4">
       <div className="flex items-center gap-4 min-w-48">
         <div className="w-12 h-12 bg-mauve/15 rounded-xl flex items-center justify-center text-mauve shrink-0">
-          <BookMarked size={18} />
+          <Icon name="bookmarks" size={24} />
         </div>
         <div>
-          <div className="text-base font-semibold text-text font-mono">{repo.name}</div>
+          <div className="text-base font-semibold text-foreground font-mono">
+            {repo.name}
+          </div>
           <div className="text-xs text-mauve font-mono flex items-center gap-1 mt-1">
-            <GitBranch size={10} />
+            <Icon name="fork_right" size={16} />
             {repo.branch || "?"}
           </div>
         </div>
@@ -50,7 +45,9 @@ export function RepoRow({ repo }: Props) {
       <div className="flex gap-2 flex-1">
         {repo.error && <span className="badge badge-error">err</span>}
         {!repo.error && repo.isClean && !repo.ahead && !repo.behind && (
-          <span className="badge badge-clean">✓</span>
+          <span className="badge badge-clean">
+            <Icon name="check" size={16} />
+          </span>
         )}
         {repo.changed > 0 && (
           <span className="badge badge-changed">{repo.changed} changed</span>
@@ -59,10 +56,16 @@ export function RepoRow({ repo }: Props) {
           <span className="badge badge-staged">{repo.staged} staged</span>
         )}
         {repo.ahead > 0 && (
-          <span className="badge badge-ahead">↑{repo.ahead}</span>
+          <span className="badge badge-ahead">
+            <Icon name="arrow_upward" size={16} />
+            {repo.ahead}
+          </span>
         )}
         {repo.behind > 0 && (
-          <span className="badge badge-behind">↓{repo.behind}</span>
+          <span className="badge badge-behind">
+            <Icon name="arrow_downward" size={16} />
+            {repo.behind}
+          </span>
         )}
         {repo.stash > 0 && (
           <span className="badge badge-stash">{repo.stash} stashed</span>
@@ -78,7 +81,7 @@ export function RepoRow({ repo }: Props) {
           {loading === "fetch" ? (
             <span className="spinner" />
           ) : (
-            <CloudDownload size={12} />
+            <Icon name="cloud_download" size={16} />
           )}{" "}
           Fetch
         </button>
@@ -90,7 +93,7 @@ export function RepoRow({ repo }: Props) {
           {loading === "pull" ? (
             <span className="spinner" />
           ) : (
-            <ArrowDownToLine size={12} />
+            <Icon name="download" size={16} />
           )}{" "}
           Pull
         </button>
@@ -102,12 +105,12 @@ export function RepoRow({ repo }: Props) {
           {loading === "push" ? (
             <span className="spinner" />
           ) : (
-            <ArrowUpFromLine size={12} />
+            <Icon name="upload" size={16} />
           )}{" "}
           Push
         </button>
         <button className="btn" onClick={handleRemove}>
-          <Trash2 size={12} /> Remove
+          <Icon name="delete" size={16} /> Remove
         </button>
       </div>
     </div>
