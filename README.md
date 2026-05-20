@@ -1,7 +1,7 @@
 # 🗂️ Git Dashboard — React Edition
 
 A local web app to monitor and manage all your Git repositories from one page.  
-Built with **Vite + React + TypeScript**. Styled with **Catppuccin** — Mocha (dark) and Latte (light) themes.
+Built with **Vite + React + TypeScript**. Styled with **Tailwind CSS v4** + **Catppuccin** Mocha (dark) and Latte (light) themes.
 
 ## Features
 
@@ -13,14 +13,14 @@ Built with **Vite + React + TypeScript**. Styled with **Catppuccin** — Mocha (
 
 ## Tech Stack
 
-| Layer    | Tech                         |
-| -------- | ---------------------------- |
-| Frontend | React 19, TypeScript, Vite   |
-| State    | Zustand                      |
-| HTTP     | Axios                        |
-| Icons    | Lucide React                 |
-| Backend  | Node.js, Express, simple-git |
-| Theme    | Catppuccin (Mocha + Latte)   |
+| Layer    | Tech                                         |
+| -------- | -------------------------------------------- |
+| Frontend | React 19, TypeScript, Vite 8, Tailwind CSS 4 |
+| State    | Zustand 5                                    |
+| HTTP     | Axios                                        |
+| Icons    | Lucide React                                 |
+| Backend  | Node.js, Express 5, simple-git, tsx          |
+| Theme    | Catppuccin (Mocha + Latte)                   |
 
 ## Requirements
 
@@ -36,7 +36,7 @@ npm install
 npm run dev:all
 
 # Option B — run separately in two terminals
-npm run server   # backend  → http://localhost:3000
+npm run server   # backend  → http://localhost:5800
 npm run dev      # frontend → http://localhost:5173
 ```
 
@@ -52,42 +52,47 @@ All git repositories inside will be auto-discovered.
 ## Project Structure
 
 ```
-├── server.cjs              # Express backend (git operations)
-├── src/
-│   ├── api/index.ts        # Axios API layer
-│   ├── store/index.ts      # Zustand global store
-│   ├── hooks/
-│   │   ├── useRepos.ts     # Data fetching + auto-refresh
-│   │   └── useGitAction.ts # Git operation hook
-│   ├── types/index.ts      # Shared TypeScript types
-│   ├── components/
-│   │   ├── Header.tsx
-│   │   ├── RepoRow.tsx
-│   │   ├── LogOutput.tsx
-│   │   ├── AddRepoModal.tsx
-│   │   └── Toast.tsx
-│   └── styles/
-│       ├── catppuccin.css  # Latte + Mocha CSS variables
-│       └── app.css         # All component styles
+├── config.json              # Saved repository paths and scan directory
+├── package.json             # NPM package scripts and dependencies
+├── tsconfig.json            # TypeScript configuration base
+├── server/                  # Node.js + Express + TS Backend
+│   ├── index.ts             # Express server entry point (default port 5800)
+│   ├── routes/
+│   │   └── api.ts           # Git operation API endpoints
+│   └── services/
+│       ├── config.ts        # Loads/saves settings to config.json
+│       └── git.ts           # Simple-git operations logic
+├── shared/                  # Code shared between frontend and backend
+│   └── types.ts             # Shared TypeScript types and interfaces
+└── ui/                      # React Frontend UI
+    ├── App.tsx              # Main App layout component
+    ├── main.tsx             # React mount entry point
+    ├── api/
+    │   └── index.ts         # Axios API requests to backend
+    ├── components/          # Reusable UI components
+    │   ├── AddRepoModal.tsx # Dialog to add a repo or scan a folder
+    │   ├── FileList.tsx     # Modified files list component
+    │   ├── Header.tsx       # Header with global controls
+    │   ├── LogOutput.tsx    # Live terminal log console
+    │   ├── RepoRow.tsx      # Repository information and actions row
+    │   └── Toast.tsx        # Toast notification system
+    ├── hooks/               # Custom React hooks
+    │   ├── useGitAction.ts  # Runs pull/push/fetch operations
+    │   └── useRepos.ts      # Automated background repository polling
+    ├── store/
+    │   └── index.ts         # Zustand global state management
+    ├── styles/
+    │   └── tailwind.css     # Tailwind CSS 4 + Catppuccin theme configuration
+    ├── types/
+    │   └── index.ts         # Frontend-specific types
+    └── utils/
+        └── toast.ts         # Simple notification helper
 ```
 
 ## Custom Port
 
 ```bash
-PORT=8080 node server.cjs
+PORT=8080 npm run server
 ```
 
-Repos and scan directory are saved in `config.json` next to `server.cjs`.
-
-## 🤖 Built with Claude
-
-[![Built with Claude Chat](https://img.shields.io/badge/Built_with-Claude_Chat-D97757?style=flat-square&logo=claude&logoColor=white)](https://claude.ai) [![Built with Claude Code](https://img.shields.io/badge/Built_with-Claude_Code-D97757?style=flat-square&logo=claude&logoColor=white)](https://claude.ai/code) [![AI Assisted](https://img.shields.io/badge/AI_Assisted-Majority-8B6CF6?style=flat-square)](https://anthropic.com)
-
-This project was developed primarily using **Claude Chat** and **Claude Code** by Anthropic.
-The majority of the codebase was generated and iterated through AI-assisted development,
-with human review and editing throughout.
-
-**Tools used:**
-
-- [Claude Chat](https://claude.ai) — architecture decisions, code generation, debugging
-- [Claude Code](https://claude.ai/code) — agentic coding, refactoring, file management
+Repos and scan directory are saved in `config.json` in the root directory.
