@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentProps } from "react";
+import clsx from "clsx";
 import { Icon } from "./Icon";
 import { setToastHandler } from "../utils/toast";
 
@@ -10,7 +11,8 @@ interface ToastItem {
 
 let toastId = 0;
 
-export function ToastContainer() {
+export function ToastContainer(props: ComponentProps<"div">) {
+  const { className, ...rest } = props;
   const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   useEffect(() => {
@@ -25,9 +27,15 @@ export function ToastContainer() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 flex flex-col gap-2 z-50">
+    <div
+      className={clsx(
+        "fixed bottom-6 right-6 flex flex-col gap-2 z-50",
+        className,
+      )}
+      {...rest}
+    >
       {toasts.map((t) => (
-        <div key={t.id} className={`toast toast-${t.type}`}>
+        <div key={t.id} className={clsx("toast", `toast-${t.type}`)}>
           {t.type === "ok" ? (
             <Icon name="check_circle" size={16} />
           ) : (

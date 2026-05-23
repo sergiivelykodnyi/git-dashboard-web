@@ -112,9 +112,13 @@
 }
 
 @layer components {
+    .icon {
+        @apply select-none inline-flex items-center justify-center shrink-0;
+    }
+
     /* Buttons */
     .btn {
-        @apply inline-flex items-center gap-2 px-2 py-1 rounded-md border border-foreground bg-foreground text-background font-mono text-sm cursor-pointer transition-all duration-150 whitespace-nowrap;
+        @apply inline-flex items-center gap-1 px-2 py-1 rounded-md border border-foreground bg-foreground text-background text-sm cursor-pointer transition-all duration-150 whitespace-nowrap;
     }
     .btn:hover:not(:disabled) {
         @apply bg-subtext0 border-subtext0;
@@ -124,20 +128,20 @@
     }
 
     .btn-primary {
-        @apply bg-mauve border-mauve text-background font-semibold;
+        @apply bg-mauve border-mauve text-background;
     }
     .btn-primary:hover:not(:disabled) {
         @apply opacity-85 bg-mauve;
     }
 
     .btn-green {
-        @apply bg-green border-green text-background font-semibold;
+        @apply bg-green border-green text-background;
     }
     .btn-blue {
-        @apply bg-blue border-blue text-background font-semibold;
+        @apply bg-blue border-blue text-background;
     }
     .btn-peach {
-        @apply bg-peach border-peach text-background font-semibold;
+        @apply bg-peach border-peach text-background;
     }
     .btn-green:hover:not(:disabled) {
         @apply opacity-85 bg-green;
@@ -184,11 +188,11 @@
 
     /* Forms */
     .form-label {
-        @apply text-xs text-subtext0 mb-2 block font-mono;
+        @apply text-xs text-subtext0 mb-2 block;
     }
 
     .form-input {
-        @apply w-full bg-background border border-surface1 rounded-lg px-4 py-2  font-mono text-sm outline-none transition-colors duration-150;
+        @apply w-full bg-background border border-surface1 rounded-lg px-4 py-2 text-sm outline-none transition-colors duration-150;
     }
     .form-input:focus {
         @apply border-mauve;

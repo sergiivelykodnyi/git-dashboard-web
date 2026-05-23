@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
 import { addRepo, getConfig, saveConfig } from "../api";
 import { toast } from "../utils/toast";
+import clsx from "clsx";
 
-interface Props {
+interface Props extends ComponentProps<"div"> {
   onClose: () => void;
   onAdded: () => void;
 }
 
-export function AddRepoModal({ onClose, onAdded }: Props) {
+export function AddRepoModal(props: Readonly<Props>) {
+  const { onClose, onAdded, className, ...rest } = props;
   const [repoPath, setRepoPath] = useState("");
   const [scanDir, setScanDir] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,8 +45,12 @@ export function AddRepoModal({ onClose, onAdded }: Props) {
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center"
+      className={clsx(
+        "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center",
+        className,
+      )}
       onClick={(e) => e.target === e.currentTarget && onClose()}
+      {...rest}
     >
       <div className="modal">
         <h3 className="text-base font-semibold text-foreground">

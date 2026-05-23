@@ -1,7 +1,9 @@
+import { type ComponentProps } from "react";
+import clsx from "clsx";
 import { Icon } from "./Icon";
 import { useAppStore } from "../store";
 
-interface Props {
+interface Props extends ComponentProps<"header"> {
   onRefresh: () => void;
   refreshing: boolean;
   onFetchAll: () => void;
@@ -9,26 +11,35 @@ interface Props {
   onAddRepo: () => void;
 }
 
-export function Header({
-  onRefresh,
-  refreshing,
-  onFetchAll,
-  fetching,
-  onAddRepo,
-}: Props) {
+export function Header(props: Readonly<Props>) {
+  const {
+    onRefresh,
+    refreshing,
+    onFetchAll,
+    fetching,
+    onAddRepo,
+    className,
+    ...rest
+  } = props;
   const { lastRefresh } = useAppStore();
 
   return (
-    <header className="bg-mantle border-b border-surface0 px-6 h-14 flex items-center justify-between sticky top-0 z-50 shrink-0">
+    <header
+      className={clsx(
+        "bg-mantle border-b border-surface0 px-6 h-14 flex items-center justify-between sticky top-0 z-50 shrink-0",
+        className,
+      )}
+      {...rest}
+    >
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-2 font-mono font-semibold text-mauve tracking-tight">
+        <div className="flex items-center gap-2 font-semibold text-mauve tracking-tight">
           <Icon name="fork_right" size={24} />
           git dashboard
         </div>
       </div>
       <div className="flex items-center gap-2">
         {lastRefresh && (
-          <span className="text-xs font-mono text-overlay0 px-2 py-1">
+          <span className="text-xs text-overlay0 px-2 py-1">
             Updated {lastRefresh.toLocaleTimeString()}
           </span>
         )}

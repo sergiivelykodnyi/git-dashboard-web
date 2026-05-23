@@ -1,3 +1,5 @@
+import { type ComponentProps } from "react";
+import clsx from "clsx";
 import { Icon } from "./Icon";
 import { useAppStore } from "../store";
 import { removeRepo as apiRemoveRepo } from "../api";
@@ -5,11 +7,12 @@ import { useGitAction } from "../hooks/useGitAction";
 import { toast } from "../utils/toast";
 import type { Repo } from "../types";
 
-interface Props {
+interface Props extends ComponentProps<"div"> {
   repo: Repo;
 }
 
-export function RepoRow({ repo }: Props) {
+export function RepoRow(props: Readonly<Props>) {
+  const { repo, className, ...rest } = props;
   const { removeRepo } = useAppStore();
   const { execute, loading } = useGitAction();
 
@@ -26,16 +29,22 @@ export function RepoRow({ repo }: Props) {
   };
 
   return (
-    <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 bg-mantle border border-surface0 rounded-xl py-4 px-4">
+    <div
+      className={clsx(
+        "flex flex-wrap sm:flex-nowrap items-center gap-4 bg-mantle border border-surface0 rounded-xl py-4 px-4",
+        className,
+      )}
+      {...rest}
+    >
       <div className="flex items-center gap-4 min-w-48">
         <div className="w-12 h-12 bg-mauve/15 rounded-xl flex items-center justify-center text-mauve shrink-0">
-          <Icon name="bookmarks" size={24} />
+          <Icon name="folder_code" size={24} />
         </div>
         <div>
-          <div className="text-base font-semibold text-foreground font-mono">
+          <div className="text-base font-semibold text-foreground">
             {repo.name}
           </div>
-          <div className="text-xs text-mauve font-mono flex items-center gap-1 mt-1">
+          <div className="text-xs text-mauve flex items-center gap-1 mt-1">
             <Icon name="fork_right" size={16} />
             {repo.branch || "?"}
           </div>
