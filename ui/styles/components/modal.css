@@ -1,0 +1,6 @@
+@layer components {
+  /* Modal */
+  .modal {
+    @apply flex w-full max-w-lg flex-col gap-4 rounded-xl border border-surface1 bg-mantle p-6 shadow-2xl;
+  }
+}

@@ -1,0 +1,25 @@
+@layer base {
+  body {
+    @apply flex h-screen flex-col overflow-hidden bg-background font-sans text-foreground;
+  }
+
+  #root {
+    @apply flex h-full flex-col overflow-hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-surface1;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-surface2;
+  }
+}

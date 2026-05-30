@@ -1,0 +1,55 @@
+@layer components {
+  /* Badges */
+  .badge {
+    @apply flex rounded p-1 text-xs font-semibold;
+  }
+
+  .badge-clean {
+    @apply bg-green/20 text-green;
+  }
+
+  .badge-staged {
+    @apply bg-green/20 text-green;
+  }
+
+  .badge-changed {
+    @apply bg-yellow/20 text-yellow;
+  }
+
+  .badge-ahead {
+    @apply bg-blue/20 text-blue;
+  }
+
+  .badge-behind {
+    @apply bg-peach/20 text-peach;
+  }
+
+  .badge-stash {
+    @apply bg-teal/20 text-teal;
+  }
+
+  .badge-error {
+    @apply bg-red/20 text-red;
+  }
+
+  /* File Status */
+  .file-status-M {
+    @apply bg-yellow/20 text-yellow;
+  }
+
+  .file-status-A {
+    @apply bg-green/20 text-green;
+  }
+
+  .file-status-D {
+    @apply bg-red/20 text-red;
+  }
+
+  .file-status-R {
+    @apply bg-blue/20 text-blue;
+  }
+
+  .file-status-unknown {
+    @apply bg-overlay0/20 text-overlay0;
+  }
+}

@@ -1,0 +1,24 @@
+@layer components {
+  /* Toast */
+  .toast {
+    @apply flex max-w-xs items-center gap-2 rounded-lg border border-surface1 bg-mantle px-4 py-4 text-sm shadow-lg;
+    animation: slideIn 0.2s ease;
+  }
+  .toast-ok {
+    @apply border-l-4 border-l-green;
+  }
+  .toast-err {
+    @apply border-l-4 border-l-red;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

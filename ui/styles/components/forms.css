@@ -1,0 +1,30 @@
+@layer components {
+  /* Forms */
+  .form-label {
+    @apply mb-2 block text-xs text-subtext0;
+  }
+
+  .form-input {
+    @apply w-full rounded-lg border border-surface1 bg-background px-4 py-2 text-sm transition-colors duration-150 outline-none;
+  }
+
+  .form-input:focus {
+    @apply border-mauve;
+  }
+
+  .form-input::placeholder {
+    @apply text-overlay0;
+  }
+
+  .commit-input {
+    @apply flex-1 rounded-lg border border-surface1 bg-background px-4 py-2 font-sans text-sm transition-colors duration-150 outline-none;
+  }
+
+  .commit-input:focus {
+    @apply border-mauve;
+  }
+
+  .commit-input::placeholder {
+    @apply text-overlay0;
+  }
+}
