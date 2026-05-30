@@ -1,6 +1,7 @@
 import { type ComponentProps } from "react";
 import clsx from "clsx";
 import { Icon } from "./Icon";
+import { ButtonIcon } from "./Button";
 import { useAppStore } from "../store";
 import { removeRepo as apiRemoveRepo } from "../api";
 import { useGitAction } from "../hooks/useGitAction";
@@ -82,45 +83,27 @@ export function RepoRow(props: Readonly<Props>) {
       </div>
 
       <div className="flex shrink-0 flex-wrap gap-2 sm:flex-nowrap">
-        <button
-          type="button"
-          className="btn btn-blue"
+        <ButtonIcon
+          icon="cloud_download"
+          isLoading={loading === "fetch"}
+          title="fetch"
           onClick={() => handleGit("fetch")}
           disabled={!!loading}
-        >
-          {loading === "fetch" ? (
-            <span className="spinner" />
-          ) : (
-            <Icon name="cloud_download" size={16} />
-          )}{" "}
-          Fetch
-        </button>
-        <button
-          type="button"
-          className="btn btn-green"
+        />
+        <ButtonIcon
+          icon="download"
+          isLoading={loading === "pull"}
+          title="pull"
           onClick={() => handleGit("pull")}
           disabled={!!loading}
-        >
-          {loading === "pull" ? (
-            <span className="spinner" />
-          ) : (
-            <Icon name="download" size={16} />
-          )}{" "}
-          Pull
-        </button>
-        <button
-          type="button"
-          className="btn btn-peach"
+        />
+        <ButtonIcon
+          icon="upload"
+          isLoading={loading === "push"}
+          title="push"
           onClick={() => handleGit("push")}
           disabled={!!loading}
-        >
-          {loading === "push" ? (
-            <span className="spinner" />
-          ) : (
-            <Icon name="upload" size={16} />
-          )}{" "}
-          Push
-        </button>
+        />
         <button type="button" className="btn" onClick={handleRemove}>
           <Icon name="delete" size={16} /> Remove
         </button>
