@@ -7,6 +7,7 @@ import { removeRepo as apiRemoveRepo } from "../api";
 import { useGitAction } from "../hooks/useGitAction";
 import { toast } from "../utils/toast";
 import type { Repo } from "../types";
+import { RepoDropdowActions } from "./RepoDropdowActions";
 
 interface Props extends ComponentProps<"div"> {
   repo: Repo;
@@ -104,9 +105,7 @@ export function RepoRow(props: Readonly<Props>) {
           onClick={() => handleGit("push")}
           disabled={!!loading}
         />
-        <button type="button" className="btn" onClick={handleRemove}>
-          <Icon name="delete" size={16} /> Remove
-        </button>
+        <RepoDropdowActions onRemove={handleRemove} />
       </div>
     </div>
   );
