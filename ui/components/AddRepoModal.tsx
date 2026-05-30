@@ -79,12 +79,12 @@ export function AddRepoModal(props: Readonly<Props>) {
           />
         </div>
         <div className="flex justify-end gap-2">
-          <button type="button" className="btn" onClick={onClose}>
+          <button type="button" className="button" onClick={onClose}>
             Cancel
           </button>
           <button
             type="button"
-            className="btn btn-primary"
+            className="button button-primary"
             onClick={handleAdd}
             disabled={loading}
           >

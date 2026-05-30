@@ -72,6 +72,7 @@ export function Dropdown(props: ComponentProps<"div">) {
       >
         <ButtonIcon
           id={triggerId}
+          className="bg-transparent hover:not-disabled:bg-surface0"
           icon="more_vert"
           title="More actions"
           aria-haspopup="menu"

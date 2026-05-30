@@ -11,7 +11,7 @@ export function ButtonIcon(props: Readonly<Props>) {
   const { className, icon, isLoading, ...rest } = props;
 
   return (
-    <button className={clsx("btn-icon", className)} type="button" {...rest}>
+    <button className={clsx("button-icon", className)} type="button" {...rest}>
       {isLoading ? (
         <span className="spinner" />
       ) : (

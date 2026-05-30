@@ -94,7 +94,7 @@ export function LogOutput(props: Readonly<ComponentProps<"div">>) {
             )}
           </div>
           <div className="flex justify-end px-6 pt-1 pb-2">
-            <button type="button" className="btn" onClick={clearLogs}>
+            <button type="button" className="button" onClick={clearLogs}>
               Clear
             </button>
           </div>

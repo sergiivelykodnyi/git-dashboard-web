@@ -85,6 +85,7 @@ export function RepoRow(props: Readonly<Props>) {
 
       <div className="flex shrink-0 flex-wrap gap-2 sm:flex-nowrap">
         <ButtonIcon
+          className="bg-transparent hover:not-disabled:bg-surface0"
           icon="cloud_download"
           isLoading={loading === "fetch"}
           title="fetch"
@@ -92,6 +93,7 @@ export function RepoRow(props: Readonly<Props>) {
           disabled={!!loading}
         />
         <ButtonIcon
+          className="bg-transparent hover:not-disabled:bg-surface0"
           icon="download"
           isLoading={loading === "pull"}
           title="pull"
@@ -99,6 +101,7 @@ export function RepoRow(props: Readonly<Props>) {
           disabled={!!loading}
         />
         <ButtonIcon
+          className="bg-transparent hover:not-disabled:bg-surface0"
           icon="upload"
           isLoading={loading === "push"}
           title="push"

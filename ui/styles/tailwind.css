@@ -117,59 +117,71 @@
   }
 
   /* Buttons */
-  .btn {
-    @apply inline-flex h-8 cursor-pointer items-center gap-1 rounded-md border-0 bg-foreground px-3 text-sm whitespace-nowrap text-background transition-all duration-150;
+  .button {
+    @apply inline-flex h-8 cursor-pointer items-center gap-1 rounded-md border-0 bg-foreground px-3 text-sm whitespace-nowrap transition-all duration-150;
   }
 
-  .btn:hover:not(:disabled) {
+  .button:hover:not(:disabled) {
     @apply bg-subtext0;
   }
 
-  .btn:disabled {
+  .button:disabled {
     @apply cursor-not-allowed opacity-50;
   }
 
-  .btn-primary {
+  .button-primary {
     @apply bg-mauve text-background;
   }
 
-  .btn-primary:hover:not(:disabled) {
+  .button-primary:hover:not(:disabled) {
     @apply bg-mauve opacity-85;
   }
 
-  .btn-green {
-    @apply bg-green text-background;
+  .button-secondary {
+    @apply bg-surface0 text-subtext0;
   }
 
-  .btn-green:hover:not(:disabled) {
-    @apply bg-green opacity-85;
-  }
-
-  .btn-blue {
-    @apply bg-blue text-background;
-  }
-
-  .btn-blue:hover:not(:disabled) {
-    @apply bg-blue opacity-85;
-  }
-
-  .btn-peach {
-    @apply bg-peach text-background;
-  }
-
-  .btn-peach:hover:not(:disabled) {
-    @apply bg-peach opacity-85;
-  }
-
-  .btn-icon {
-    @apply inline-flex size-8 cursor-pointer items-center justify-center rounded-md bg-surface0;
-  }
-
-  .btn-icon:hover:not(:disabled) {
+  .button-secondary:hover:not(:disabled) {
     @apply bg-surface1;
   }
 
-  .btn-icon:disabled {
+  .button-secondary:disabled {
+    @apply cursor-not-allowed;
+  }
+
+  .button-green {
+    @apply bg-green text-background;
+  }
+
+  .button-green:hover:not(:disabled) {
+    @apply bg-green opacity-85;
+  }
+
+  .button-blue {
+    @apply bg-blue text-background;
+  }
+
+  .button-blue:hover:not(:disabled) {
+    @apply bg-blue opacity-85;
+  }
+
+  .button-peach {
+    @apply bg-peach text-background;
+  }
+
+  .button-peach:hover:not(:disabled) {
+    @apply bg-peach opacity-85;
+  }
+
+  .button-icon {
+    @apply inline-flex size-8 cursor-pointer items-center justify-center rounded-md bg-surface0 text-subtext0;
+  }
+
+  .button-icon:hover:not(:disabled) {
+    @apply bg-surface1;
+  }
+
+  .button-icon:disabled {
     @apply cursor-not-allowed;
   }
 
@@ -242,19 +254,19 @@
   }
 
   /* File Status */
-  .fs-M {
+  .file-status-M {
     @apply bg-yellow/20 text-yellow;
   }
-  .fs-A {
+  .file-status-A {
     @apply bg-green/20 text-green;
   }
-  .fs-D {
+  .file-status-D {
     @apply bg-red/20 text-red;
   }
-  .fs-R {
+  .file-status-R {
     @apply bg-blue/20 text-blue;
   }
-  .fs-unknown {
+  .file-status-unknown {
     @apply bg-overlay0/20 text-overlay0;
   }
 

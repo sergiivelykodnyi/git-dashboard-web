@@ -46,7 +46,7 @@ export function Header(props: Readonly<Props>) {
           )}
           <button
             type="button"
-            className="btn"
+            className="button button-secondary"
             onClick={onRefresh}
             disabled={refreshing}
           >
@@ -63,7 +63,7 @@ export function Header(props: Readonly<Props>) {
           </button>
           <button
             type="button"
-            className="btn btn-blue"
+            className="button button-secondary"
             onClick={onFetchAll}
             disabled={fetching}
           >
@@ -74,7 +74,7 @@ export function Header(props: Readonly<Props>) {
             )}{" "}
             Fetch all
           </button>
-          <button type="button" className="btn btn-primary" onClick={onAddRepo}>
+          <button type="button" className="button button-primary" onClick={onAddRepo}>
             <Icon name="add" size={16} /> Add repo
           </button>
         </div>

@@ -7,12 +7,12 @@ interface Props extends ComponentProps<"div"> {
 }
 
 const statusClass: Record<string, string> = {
-  M: "fs-M",
-  A: "fs-A",
-  D: "fs-D",
-  R: "fs-R",
-  "?": "fs-unknown",
-  " ": "fs-unknown",
+  M: "file-status-M",
+  A: "file-status-A",
+  D: "file-status-D",
+  R: "file-status-R",
+  "?": "file-status-unknown",
+  " ": "file-status-unknown",
 };
 
 function fileStatus(f: GitFile) {
@@ -45,7 +45,7 @@ export function FileList(props: Readonly<Props>) {
               <div
                 className={clsx(
                   "flex h-4 w-4 shrink-0 items-center justify-center rounded text-xs font-bold",
-                  statusClass[s] ?? "fs-unknown",
+                  statusClass[s] ?? "file-status-unknown",
                 )}
               >
                 {s}

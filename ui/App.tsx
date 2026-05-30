@@ -56,7 +56,7 @@ function App() {
               <p className="mt-1">Add a repository to get started.</p>
               <button
                 type="button"
-                className="btn btn-primary mt-5"
+                className="button button-primary mt-5"
                 onClick={() => setShowModal(true)}
               >
                 Add repository
