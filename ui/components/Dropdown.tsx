@@ -30,8 +30,19 @@ function useDropdown() {
   return context;
 }
 
-export function Dropdown(props: ComponentProps<"div">) {
-  const { children, className, ...rest } = props;
+interface DropdownProps extends ComponentProps<"div"> {
+  triggerIcon?: string;
+  triggerTitle?: string;
+}
+
+export function Dropdown(props: DropdownProps) {
+  const {
+    children,
+    className,
+    triggerIcon = "more_vert",
+    triggerTitle = "More actions",
+    ...rest
+  } = props;
   const [isOpenMenu, setMenu] = useState(false);
   const triggerId = useId();
   const menuId = useId();
@@ -73,8 +84,8 @@ export function Dropdown(props: ComponentProps<"div">) {
         <ButtonIcon
           id={triggerId}
           className="bg-transparent hover:not-disabled:bg-surface0"
-          icon="more_vert"
-          title="More actions"
+          icon={triggerIcon}
+          title={triggerTitle}
           aria-haspopup="menu"
           aria-expanded={isOpenMenu}
           aria-controls={menuId}

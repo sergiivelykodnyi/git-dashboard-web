@@ -1,7 +1,14 @@
 import { type ComponentProps } from "react";
 import clsx from "clsx";
 import { Icon } from "./Icon";
-import { useAppStore } from "../store";
+import { useAppStore, type ThemeMode } from "../store";
+import { Dropdown, DropdownItem, DropdownAction } from "./Dropdown";
+
+const themeIcons: Record<ThemeMode, string> = {
+  system: "contrast",
+  dark: "dark_mode",
+  light: "light_mode",
+};
 
 interface Props extends ComponentProps<"header"> {
   onRefresh: () => void;
@@ -21,7 +28,7 @@ export function Header(props: Readonly<Props>) {
     className,
     ...rest
   } = props;
-  const { lastRefresh } = useAppStore();
+  const { lastRefresh, themeMode, setThemeMode } = useAppStore();
 
   return (
     <header
@@ -44,6 +51,65 @@ export function Header(props: Readonly<Props>) {
               Updated {lastRefresh.toLocaleTimeString()}
             </span>
           )}
+          <Dropdown
+            triggerIcon={themeIcons[themeMode]}
+            triggerTitle="Switch theme"
+          >
+            <DropdownItem>
+              <DropdownAction
+                className={clsx(
+                  themeMode === "system" && "bg-surface0/50 text-mauve",
+                )}
+                onClick={() => setThemeMode("system")}
+              >
+                <Icon
+                  name="contrast"
+                  className={clsx(
+                    "menu-item-icon",
+                    themeMode === "system" && "text-mauve",
+                  )}
+                  size={16}
+                />
+                System
+              </DropdownAction>
+            </DropdownItem>
+            <DropdownItem>
+              <DropdownAction
+                className={clsx(
+                  themeMode === "dark" && "bg-surface0/50 text-mauve",
+                )}
+                onClick={() => setThemeMode("dark")}
+              >
+                <Icon
+                  name="dark_mode"
+                  className={clsx(
+                    "menu-item-icon",
+                    themeMode === "dark" && "text-mauve",
+                  )}
+                  size={16}
+                />
+                Dark
+              </DropdownAction>
+            </DropdownItem>
+            <DropdownItem>
+              <DropdownAction
+                className={clsx(
+                  themeMode === "light" && "bg-surface0/50 text-mauve",
+                )}
+                onClick={() => setThemeMode("light")}
+              >
+                <Icon
+                  name="light_mode"
+                  className={clsx(
+                    "menu-item-icon",
+                    themeMode === "light" && "text-mauve",
+                  )}
+                  size={16}
+                />
+                Light
+              </DropdownAction>
+            </DropdownItem>
+          </Dropdown>
           <button
             type="button"
             className="button button-secondary"
@@ -74,7 +140,11 @@ export function Header(props: Readonly<Props>) {
             )}{" "}
             Fetch all
           </button>
-          <button type="button" className="button button-primary" onClick={onAddRepo}>
+          <button
+            type="button"
+            className="button button-primary"
+            onClick={onAddRepo}
+          >
             <Icon name="add" size={16} /> Add repo
           </button>
         </div>
