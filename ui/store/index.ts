@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Repo, LogEntry } from "../types";
+import type { Repo, LogEntry } from "@ui/types";
 
 let logId = 0;
 

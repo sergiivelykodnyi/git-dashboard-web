@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { Icon } from "./components/Icon";
-import { Header } from "./components/Header";
-import { RepoRow } from "./components/RepoRow";
-import { LogOutput } from "./components/LogOutput";
-import { AddRepoModal } from "./components/AddRepoModal";
-import { ToastContainer } from "./components/Toast";
-import { useRepos } from "./hooks/useRepos";
-import { useAppStore } from "./store";
-import { fetchAllRepos } from "./api";
+import { Icon } from "@ui/components/Icon";
+import { Header } from "@ui/components/Header";
+import { RepoRow } from "@ui/components/RepoRow";
+import { LogOutput } from "@ui/components/LogOutput";
+import { AddRepoModal } from "@ui/components/AddRepoModal";
+import { ToastContainer } from "@ui/components/Toast";
+import { useRepos } from "@ui/hooks/useRepos";
+import { useAppStore } from "@ui/store";
+import { fetchAllRepos } from "@ui/api";
 
 function App() {
   const [showModal, setShowModal] = useState(false);

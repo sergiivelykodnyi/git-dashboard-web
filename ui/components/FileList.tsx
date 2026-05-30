@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react";
 import clsx from "clsx";
-import type { GitFile } from "../types";
+import type { GitFile } from "@ui/types";
 
 interface Props extends ComponentProps<"div"> {
   files: GitFile[];

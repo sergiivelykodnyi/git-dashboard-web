@@ -1,5 +1,5 @@
-import { Dropdown, DropdownItem, DropdownAction } from "./Dropdown";
-import { Icon } from "./Icon";
+import { Dropdown, DropdownItem, DropdownAction } from "@ui/components/Dropdown";
+import { Icon } from "@ui/components/Icon";
 
 interface Props {
   onRemove: () => void;

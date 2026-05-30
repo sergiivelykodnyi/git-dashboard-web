@@ -1,6 +1,6 @@
 import { useState, type ComponentProps } from "react";
-import { addRepo, getConfig, saveConfig } from "../api";
-import { toast } from "../utils/toast";
+import { addRepo, getConfig, saveConfig } from "@ui/api";
+import { toast } from "@ui/utils/toast";
 import clsx from "clsx";
 
 interface Props extends ComponentProps<"div"> {

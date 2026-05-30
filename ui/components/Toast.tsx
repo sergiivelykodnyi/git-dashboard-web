@@ -1,7 +1,7 @@
 import { useEffect, useState, type ComponentProps } from "react";
 import clsx from "clsx";
-import { Icon } from "./Icon";
-import { setToastHandler } from "../utils/toast";
+import { Icon } from "@ui/components/Icon";
+import { setToastHandler } from "@ui/utils/toast";
 
 interface ToastItem {
   id: number;

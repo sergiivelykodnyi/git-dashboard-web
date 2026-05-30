@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 import clsx from "clsx";
-import { Icon } from "./Icon";
+import { Icon } from "@ui/components/Icon";
 
 interface Props extends ComponentProps<"button"> {
   icon: string;

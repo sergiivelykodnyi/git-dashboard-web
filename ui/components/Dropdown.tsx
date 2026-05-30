@@ -9,7 +9,7 @@ import {
 } from "react";
 import type { ComponentProps } from "react";
 import clsx from "clsx";
-import { ButtonIcon } from "./Button";
+import { ButtonIcon } from "@ui/components/Button";
 
 interface DropdownContextType {
   isOpen: boolean;

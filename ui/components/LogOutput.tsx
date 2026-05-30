@@ -1,6 +1,6 @@
 import { useEffect, useRef, type ComponentProps } from "react";
-import { Icon } from "./Icon";
-import { useAppStore } from "../store";
+import { Icon } from "@ui/components/Icon";
+import { useAppStore } from "@ui/store";
 import clsx from "clsx";
 
 const typeColorMap = {

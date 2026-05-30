@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Repo, GitAction, GitActionResult } from "../types";
+import type { Repo, GitAction, GitActionResult } from "@ui/types";
 
 const api = axios.create({
   baseURL: "http://localhost:5800/api",

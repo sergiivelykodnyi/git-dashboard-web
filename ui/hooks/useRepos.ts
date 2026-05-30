@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
-import { fetchRepos } from "../api";
-import { useAppStore } from "../store";
+import { fetchRepos } from "@ui/api";
+import { useAppStore } from "@ui/store";
 
 export function useRepos(intervalMs = 60_000) {
   const { setRepos, setLastRefresh, addLog } = useAppStore();

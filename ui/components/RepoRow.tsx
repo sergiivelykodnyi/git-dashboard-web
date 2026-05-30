@@ -1,13 +1,13 @@
 import { type ComponentProps } from "react";
 import clsx from "clsx";
-import { Icon } from "./Icon";
-import { ButtonIcon } from "./Button";
-import { useAppStore } from "../store";
-import { removeRepo as apiRemoveRepo } from "../api";
-import { useGitAction } from "../hooks/useGitAction";
-import { toast } from "../utils/toast";
-import type { Repo } from "../types";
-import { RepoDropdowActions } from "./RepoDropdowActions";
+import { Icon } from "@ui/components/Icon";
+import { ButtonIcon } from "@ui/components/Button";
+import { useAppStore } from "@ui/store";
+import { removeRepo as apiRemoveRepo } from "@ui/api";
+import { useGitAction } from "@ui/hooks/useGitAction";
+import { toast } from "@ui/utils/toast";
+import type { Repo } from "@ui/types";
+import { RepoDropdowActions } from "@ui/components/RepoDropdowActions";
 
 interface Props extends ComponentProps<"div"> {
   repo: Repo;

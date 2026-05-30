@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { runGitAction } from "../api";
-import { useAppStore } from "../store";
-import type { GitAction } from "../types";
+import { runGitAction } from "@ui/api";
+import { useAppStore } from "@ui/store";
+import type { GitAction } from "@ui/types";
 
 export function useGitAction() {
   const [loading, setLoading] = useState<GitAction | null>(null);

@@ -1,9 +1,9 @@
 import { type ComponentProps } from "react";
 import clsx from "clsx";
-import { Icon } from "./Icon";
-import { useAppStore, type ThemeMode } from "../store";
-import { ButtonIcon } from "./Button";
-import { Dropdown, DropdownItem, DropdownAction } from "./Dropdown";
+import { Icon } from "@ui/components/Icon";
+import { useAppStore, type ThemeMode } from "@ui/store";
+import { ButtonIcon } from "@ui/components/Button";
+import { Dropdown, DropdownItem, DropdownAction } from "@ui/components/Dropdown";
 
 const themeIcons: Record<ThemeMode, string> = {
   system: "contrast",
