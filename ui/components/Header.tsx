@@ -26,12 +26,12 @@ export function Header(props: Readonly<Props>) {
   return (
     <header
       className={clsx(
-        "sticky top-0 z-50 h-16 border-b border-surface0 bg-mantle px-6",
+        "sticky top-0 z-50 h-20 border-b border-surface0 bg-mantle px-6",
         className,
       )}
       {...rest}
     >
-      <div className="mx-auto flex h-full max-w-7xl items-center justify-between">
+      <div className="flex h-full items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 font-semibold tracking-tight text-mauve uppercase">
             <Icon name="fork_right" size={24} />

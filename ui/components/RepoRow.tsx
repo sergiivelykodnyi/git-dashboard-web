@@ -31,7 +31,7 @@ export function RepoRow(props: Readonly<Props>) {
   return (
     <div
       className={clsx(
-        "flex flex-wrap items-center gap-4 border-b border-surface0 p-4 last:border-b-0 sm:flex-nowrap",
+        "flex items-center gap-4 rounded-xl p-3 hover:bg-surface0/50",
         className,
       )}
       {...rest}

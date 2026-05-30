@@ -37,40 +37,42 @@ function App() {
   };
 
   return (
-    <>
-      <Header
-        onRefresh={handleRefresh}
-        refreshing={refreshing}
-        onFetchAll={handleFetchAll}
-        fetching={fetching}
-        onAddRepo={() => setShowModal(true)}
-      />
-      <main className="p-6">
-        {repos.length === 0 ? (
-          <div className="mx-auto max-w-7xl pt-16 text-center text-overlay0">
-            <Icon name="bookmarks" size={56} />
-            <h2 className="mt-2 text-2xl font-medium text-subtext0">
-              No repositories yet
-            </h2>
-            <p className="mt-1">Add a repository to get started.</p>
-            <button
-              type="button"
-              className="btn btn-primary mt-5"
-              onClick={() => setShowModal(true)}
-            >
-              Add repository
-            </button>
-          </div>
-        ) : (
-          <div className="mx-auto max-w-7xl space-y-4">
-            <div className="">
-              {repos.map((r) => (
-                <RepoRow key={r.path} repo={r} />
-              ))}
+    <div className="h-full">
+      <main className="flex min-h-0 min-w-0 flex-col">
+        <Header
+          onRefresh={handleRefresh}
+          refreshing={refreshing}
+          onFetchAll={handleFetchAll}
+          fetching={fetching}
+          onAddRepo={() => setShowModal(true)}
+        />
+        <div className="min-h-0 flex-1 overflow-y-auto p-6">
+          {repos.length === 0 ? (
+            <div className="mx-auto max-w-7xl pt-16 text-center text-overlay0">
+              <Icon name="bookmarks" size={56} />
+              <h2 className="mt-2 text-2xl font-medium text-subtext0">
+                No repositories yet
+              </h2>
+              <p className="mt-1">Add a repository to get started.</p>
+              <button
+                type="button"
+                className="btn btn-primary mt-5"
+                onClick={() => setShowModal(true)}
+              >
+                Add repository
+              </button>
             </div>
-            <LogOutput />
-          </div>
-        )}
+          ) : (
+            <div className="space-y-4">
+              <div className="">
+                {repos.map((r) => (
+                  <RepoRow key={r.path} repo={r} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        <LogOutput />
       </main>
 
       {showModal && (
@@ -81,7 +83,7 @@ function App() {
       )}
 
       <ToastContainer />
-    </>
+    </div>
   );
 }
 
