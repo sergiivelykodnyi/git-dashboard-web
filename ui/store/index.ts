@@ -8,6 +8,7 @@ interface AppState {
   activeRepoPath: string | null;
   logs: LogEntry[];
   lastRefresh: Date | null;
+  isLogOpen: boolean;
 
   setRepos: (repos: Repo[]) => void;
   updateRepo: (repo: Repo) => void;
@@ -16,6 +17,8 @@ interface AppState {
   addLog: (msg: string, type: LogEntry["type"]) => void;
   clearLogs: () => void;
   setLastRefresh: () => void;
+  toggleLogOpen: () => void;
+  setLogOpen: (open: boolean) => void;
 }
 
 function applySystemTheme() {
@@ -35,6 +38,7 @@ export const useAppStore = create<AppState>((set) => ({
   activeRepoPath: null,
   logs: [],
   lastRefresh: null,
+  isLogOpen: false,
 
   setRepos: (repos) => set({ repos }),
 
@@ -63,4 +67,8 @@ export const useAppStore = create<AppState>((set) => ({
   clearLogs: () => set({ logs: [] }),
 
   setLastRefresh: () => set({ lastRefresh: new Date() }),
+
+  toggleLogOpen: () => set((state) => ({ isLogOpen: !state.isLogOpen })),
+
+  setLogOpen: (open) => set({ isLogOpen: open }),
 }));

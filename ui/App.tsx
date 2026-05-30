@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="h-full">
-      <main className="flex min-h-0 min-w-0 flex-col">
+      <main className="flex h-full min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         <Header
           onRefresh={handleRefresh}
           refreshing={refreshing}
@@ -46,7 +46,7 @@ function App() {
           fetching={fetching}
           onAddRepo={() => setShowModal(true)}
         />
-        <div className="min-h-0 flex-1 overflow-y-auto p-6">
+        <div className="min-h-0 flex-1 overflow-y-scroll p-6">
           {repos.length === 0 ? (
             <div className="mx-auto max-w-7xl pt-16 text-center text-overlay0">
               <Icon name="bookmarks" size={56} />
