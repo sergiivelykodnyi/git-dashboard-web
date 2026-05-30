@@ -12,6 +12,7 @@ triggers:
 Always use the Conventional Commits convention when generating, writing, or proposing commit messages for this repository.
 
 ## Format
+
 ```text
 <type>(<optional-scope>): <description>
 
@@ -19,6 +20,7 @@ Always use the Conventional Commits convention when generating, writing, or prop
 ```
 
 ## Allowed Types
+
 - `feat`: A new feature for the user (e.g., `feat(ui): add search input for repositories`)
 - `fix`: A bug fix (e.g., `fix(modal): resolve backdrop click close issue`)
 - `style`: Formatting, visual tweaks, CSS, and layout changes that don't affect logic (e.g., `style: unify button paddings and colors`)
