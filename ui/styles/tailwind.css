@@ -174,11 +174,11 @@
   }
 
   .button-icon {
-    @apply inline-flex size-8 cursor-pointer items-center justify-center rounded-md bg-surface0 text-subtext0;
+    @apply inline-flex size-8 cursor-pointer items-center justify-center rounded-md bg-transparent text-subtext0;
   }
 
   .button-icon:hover:not(:disabled) {
-    @apply bg-surface1;
+    @apply bg-surface0;
   }
 
   .button-icon:disabled {
@@ -293,11 +293,15 @@
   }
 
   .menu-item:hover {
-    @apply bg-surface1 text-foreground;
+    @apply bg-surface0 text-foreground;
   }
 
   .menu-item .menu-item-icon {
     @apply inline-flex shrink-0 items-center justify-center text-overlay1;
+  }
+
+  .menu-item-active {
+    @apply text-mauve;
   }
 
   .menu-item.danger {

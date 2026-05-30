@@ -83,7 +83,6 @@ export function Dropdown(props: DropdownProps) {
       >
         <ButtonIcon
           id={triggerId}
-          className="bg-transparent hover:not-disabled:bg-surface0"
           icon={triggerIcon}
           title={triggerTitle}
           aria-haspopup="menu"
@@ -153,8 +152,12 @@ export function DropdownItemSeparator(props: ComponentProps<"li">) {
   );
 }
 
-export function DropdownAction(props: ComponentProps<"button">) {
-  const { children, className, onClick, ...rest } = props;
+interface DropdownActionProps extends ComponentProps<"button"> {
+  isActive?: boolean;
+}
+
+export function DropdownAction(props: Readonly<DropdownActionProps>) {
+  const { children, className, isActive = false, onClick, ...rest } = props;
   const { setOpen } = useDropdown();
 
   const handleClick = useCallback(
@@ -169,7 +172,7 @@ export function DropdownAction(props: ComponentProps<"button">) {
   return (
     <button
       role="menuitem"
-      className={clsx("menu-item", className)}
+      className={clsx("menu-item", isActive && "menu-item-active", className)}
       type="button"
       onClick={handleClick}
       {...rest}
